@@ -1,0 +1,15 @@
+
+    CloudFormationName:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: BucketName
+        BucketEncryption:
+          ServerSideEncryptionConfiguration:
+            - ServerSideEncryptionByDefault:
+                SSEAlgorithm: AES256
+        LifecycleConfiguration:
+          Rules:
+            - Id: ExpirationRule
+              ExpirationInDays: 30
+              Prefix: '/'
+              Status: Enabled   
