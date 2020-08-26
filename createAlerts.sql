@@ -1,7 +1,6 @@
 USE [DB]
 GO
 
-/****** Object:  Trigger [dbo].[Updt_User_Email]    Script Date: 8/26/2020 4:30:34 PM ******/
 SET ANSI_NULLS ON
 GO
 
