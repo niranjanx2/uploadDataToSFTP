@@ -15,6 +15,7 @@ function uploadDataToClient(){
     const remote = `./path/filename.csv`;
     const fileName = yourname.csv
     
+    //1st way
     // /tmp is for aws-lambda
     const writerStream = fs.createWriteStream(`/tmp/${fileName}`);
     
@@ -25,6 +26,13 @@ function uploadDataToClient(){
     const reader = fs.createReadStream(`/tmp/${fileName}`);
 
     await this.sftp.put(reader, remote);
+    //1st way end
+    
+    
+    //2nd way with buffer
+    const csvToPass = Buffer.from(fileName, 'utf-8');
+    await this.sftp.put(csvToPass, remote);
+    
     return this.sftp;
   } catch (err) {
     utilLogger.error({ err });
